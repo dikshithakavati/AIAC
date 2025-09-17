@@ -1,0 +1,107 @@
+[
+  {
+    "title": "Machine Learning Algorithms for Big Data Analysis",
+    "author": "Dr. Sarah Johnson",
+    "year": 2023,
+    "journal": "IEEE Transactions on Knowledge and Data Engineering",
+    "doi": "10.1109/TKDE.2023.1234567"
+  },
+  {
+    "title": "Deep Learning Applications in Computer Vision",
+    "author": "Prof. Michael Chen",
+    "year": 2023,
+    "journal": "Nature Machine Intelligence",
+    "doi": "10.1038/s42256-023-00123-4"
+  },
+  {
+    "title": "Blockchain Technology in Healthcare Systems",
+    "author": "Dr. Emily Rodriguez",
+    "year": 2023,
+    "journal": "Journal of Medical Internet Research",
+    "doi": "10.2196/12345"
+  },
+  {
+    "title": "Quantum Computing and Cryptography",
+    "author": "Dr. David Kim",
+    "year": 2023,
+    "journal": "Physical Review Letters",
+    "doi": "10.1103/PhysRevLett.123.456789"
+  },
+  {
+    "title": "Artificial Intelligence in Autonomous Vehicles",
+    "author": "Prof. Lisa Wang",
+    "year": 2023,
+    "journal": "IEEE Transactions on Intelligent Transportation Systems",
+    "doi": "10.1109/TITS.2023.1234567"
+  },
+  {
+    "title": "Natural Language Processing for Sentiment Analysis",
+    "author": "Dr. Robert Smith",
+    "year": 2023,
+    "journal": "Computational Linguistics",
+    "doi": "10.1162/coli_a_00456"
+  },
+  {
+    "title": "Cybersecurity Threats in IoT Devices",
+    "author": "Dr. Jennifer Brown",
+    "year": 2023,
+    "journal": "IEEE Security & Privacy",
+    "doi": "10.1109/MSEC.2023.1234567"
+  },
+  {
+    "title": "Cloud Computing Performance Optimization",
+    "author": "Prof. William Davis",
+    "year": 2023,
+    "journal": "ACM Computing Surveys",
+    "doi": "10.1145/1234567.1234567"
+  },
+  {
+    "title": "Data Mining Techniques for Social Networks",
+    "author": "Dr. Maria Garcia",
+    "year": 2023,
+    "journal": "Knowledge and Information Systems",
+    "doi": "10.1007/s10115-023-12345-6"
+  },
+  {
+    "title": "Neural Networks for Pattern Recognition",
+    "author": "Dr. James Wilson",
+    "year": 2023,
+    "journal": "Neural Networks",
+    "doi": "10.1016/j.neunet.2023.123456"
+  },
+  {
+    "title": "Software Engineering Best Practices",
+    "author": "Prof. Patricia Miller",
+    "year": 2023,
+    "journal": "IEEE Software",
+    "doi": "10.1109/MS.2023.1234567"
+  },
+  {
+    "title": "Human-Computer Interaction Design",
+    "author": "Dr. Thomas Anderson",
+    "year": 2023,
+    "journal": "ACM Transactions on Computer-Human Interaction",
+    "doi": "10.1145/1234567.1234567"
+  },
+  {
+    "title": "Database Systems Optimization",
+    "author": "Dr. Linda Taylor",
+    "year": 2023,
+    "journal": "ACM Transactions on Database Systems",
+    "doi": "10.1145/1234567.1234567"
+  },
+  {
+    "title": "Computer Graphics and Visualization",
+    "author": "Prof. Christopher Lee",
+    "year": 2023,
+    "journal": "ACM Transactions on Graphics",
+    "doi": "10.1145/1234567.1234567"
+  },
+  {
+    "title": "Distributed Systems Architecture",
+    "author": "Dr. Amanda White",
+    "year": 2023,
+    "journal": "ACM Transactions on Computer Systems",
+    "doi": "10.1145/1234567.1234567"
+  }
+]

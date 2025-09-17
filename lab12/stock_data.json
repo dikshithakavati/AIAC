@@ -1,0 +1,107 @@
+[
+  {
+    "symbol": "AAPL",
+    "opening_price": 150.25,
+    "closing_price": 155.80,
+    "volume": 45000000,
+    "market_cap": 2500000000000
+  },
+  {
+    "symbol": "GOOGL",
+    "opening_price": 2800.50,
+    "closing_price": 2750.25,
+    "volume": 2500000,
+    "market_cap": 1800000000000
+  },
+  {
+    "symbol": "MSFT",
+    "opening_price": 380.75,
+    "closing_price": 385.90,
+    "volume": 18000000,
+    "market_cap": 2800000000000
+  },
+  {
+    "symbol": "AMZN",
+    "opening_price": 3200.00,
+    "closing_price": 3150.75,
+    "volume": 8000000,
+    "market_cap": 1600000000000
+  },
+  {
+    "symbol": "TSLA",
+    "opening_price": 800.25,
+    "closing_price": 820.50,
+    "volume": 35000000,
+    "market_cap": 850000000000
+  },
+  {
+    "symbol": "META",
+    "opening_price": 350.50,
+    "closing_price": 365.25,
+    "volume": 22000000,
+    "market_cap": 900000000000
+  },
+  {
+    "symbol": "NVDA",
+    "opening_price": 450.75,
+    "closing_price": 475.80,
+    "volume": 15000000,
+    "market_cap": 1200000000000
+  },
+  {
+    "symbol": "NFLX",
+    "opening_price": 420.25,
+    "closing_price": 435.50,
+    "volume": 12000000,
+    "market_cap": 180000000000
+  },
+  {
+    "symbol": "AMD",
+    "opening_price": 85.50,
+    "closing_price": 88.75,
+    "volume": 28000000,
+    "market_cap": 140000000000
+  },
+  {
+    "symbol": "INTC",
+    "opening_price": 45.25,
+    "closing_price": 42.80,
+    "volume": 35000000,
+    "market_cap": 180000000000
+  },
+  {
+    "symbol": "CRM",
+    "opening_price": 180.75,
+    "closing_price": 185.50,
+    "volume": 8000000,
+    "market_cap": 180000000000
+  },
+  {
+    "symbol": "ADBE",
+    "opening_price": 480.50,
+    "closing_price": 475.25,
+    "volume": 5000000,
+    "market_cap": 220000000000
+  },
+  {
+    "symbol": "PYPL",
+    "opening_price": 95.25,
+    "closing_price": 98.50,
+    "volume": 15000000,
+    "market_cap": 110000000000
+  },
+  {
+    "symbol": "UBER",
+    "opening_price": 45.80,
+    "closing_price": 47.25,
+    "volume": 25000000,
+    "market_cap": 95000000000
+  },
+  {
+    "symbol": "LYFT",
+    "opening_price": 25.50,
+    "closing_price": 24.75,
+    "volume": 18000000,
+    "market_cap": 8000000000
+  }
+]
