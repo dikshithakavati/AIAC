@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    body {font-family: Arial, sans-serif; margin:0; padding:0; box-sizing:border-box;}
+    header {background-color: #4CAF50; color: white; padding: 10px 0; text-align: center;}
+    nav a {color: white; margin: 0 15px; text-decoration: none; font-weight: bold;}
+    nav a:hover {text-decoration: underline;}
+    .title {margin: 0; font-size: 2em;}
+    section {padding: 20px; margin: 20px;}
+    .pic {width:150px; height:150px; border-radius:50%; display:block; margin:auto;}
+    .txt {text-align:cesnter; max-width:600px; margin:auto;}
+    h2 {
+        color: #4CAF50;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        text-shadow: 1px 1px 6px rgba(76,175,80,0.15);
+        transition: color 0.3s;
+    }
+    h2:hover {
+        color: #388E3C;
+        text-shadow: 2px 2px 12px rgba(56,142,60,0.18);
+    }
+    ul {list-style-type:none; padding:0;}
+    .skill {margin-bottom:10px;}
+    .bar {height:20px; background-color:#4CAF50; width:var(--lvl); border-radius:5px;}
+    .grid {display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;}
+    .card {background-color:#f4f4f4; padding:20px; border-radius:8px; text-align:center; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    footer {text-align:center; padding:10px 0; background-color:#f4f4f4; margin-top:20px;}
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="stylesheet" href="style.css">
+
+<style>body{background:pink;}
+  @media(min-width:768px) {body {background:beige}}
+  @media(min-width:1024px){body{background color:lavender;}}
+</style>
+</head>
+<body>
+<header id="head">
+  <h1 class="title">My Portfolio</h1>
+  <nav>
+    <a href="#about" target="_blank">About</a>
+    <BR>
+    <a href="#skills" target="_blank">Skills</a>
+    <BR>
+    <a href="#projects" target="_blank">Projects</a>
+  </nav>
+</header>
+<section id="about">
+  </div>
+  <img src="C:\Users\kavati dikshitha\OneDrive\Desktop\my-node-app\WhatsApp Image 2025-09-20 at 15.43.47_6bde7ea5.jpg" alt="portfolio image" class="pic">
+  <BR>
+  <div class="txt">
+    <h2>About Me</h2>
+    <BR>
+    <p>K.Dikshitha, Computer Science student at SR UNIVERSITY, passionate about web development and committed to building user-friendly, efficient digital solutions while continuously learning new technologies.</p>
+  </div>
+</section>
+<HR>
+<section id="skills">
+  <h2>Skills:</h2>
+  <UL>
+       <div class="skill">HTML<div class="bar" style="--lvl:90%"></div></div>
+       <div class="skill">CSS<div class="bar" style="--lvl:80%"></div></div>
+       <div class="skill">PYTHON PROGRAMMING<div class="bar" style="--lvl:90%"></div></div>
+       <div class="skill">C PROGRAMMING FUNDAMENTALS<div class="bar" style="--lvl:80%"></div></div>
+       <div class="skill">PROBLEM SOLVING & DEBUGGING<div class="bar" style="--lvl:90%"></div></div>
+       <div class="skill">BASIC SQL AND DATABASE CONCEPTS<div class="bar" style="--lvl:80%"></div></div>
+  </UL></section>
+  <HR>
+  <section id="soft skills">
+    <h2>Soft Skills:</h2>
+    <ul>
+    <div class="skill">COMMUNICATION AND TEAM COLLABORATION<div class="bar" style="--lvl:90%"></div></div>
+    <div class="skill">TIME MANAGEMENT<div class="bar" style="--lvl:90%"></div></div>
+    <div class="skill">CRITICAL THINKING<div class="bar" style="--lvl:90%"></div></div>
+    <div class="skill">DECISION MAKING<div class="bar" style="--lvl:90%"></div></div>
+  </ul></section>
+  <HR>
+  <H2>MY PROJECTS:</H2>
+<section id="projects" class="grid">
+  <div class="card">WEATHER APP</div>
+  <div class="card">Train Reservation Portal</div><div class="card">STOPWATCH APP</div><div class="card">CURRENCY CONVERTER</div>
+  <div class="card">MUSIC 4 U</div><div class="card">MOVIE FINDER</div>
+</section>
+<footer>
+    <p>
+        &copy; 2024 K.Dikshitha &mdash; 
+        <a href="mailto:kavatideekshitha1@gmail.com" style="color:#4CAF50; text-decoration:none; font-weight:bold;">
+            kavatideekshitha1@gmail.com
+        </a>
+    </p>
+</footer>
+<style>
+    footer {
+        background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%);
+        color: white;
+        padding: 20px 0;
+        margin-top: 40px;
+        box-shadow: 0 -2px 8px rgba(76,175,80,0.15);
+        font-size: 1.1em;
+        letter-spacing: 0.5px;
+    }
+    footer a:hover {
+        text-decoration: underline;
+        color: #fff;
+        background: #388E3C;
+        border-radius: 4px;
+        padding: 2px 6px;
+        transition: background 0.2s, color 0.2s;
+    }
+</style>
+</body>
+</html>
