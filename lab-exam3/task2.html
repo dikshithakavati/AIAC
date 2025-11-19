@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 30px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.4),
+                        0 0 60px rgba(102, 126, 234, 0.2);
+            padding: 50px;
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 45px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+            position: relative;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 0;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+            animation: fadeInUp 0.5s ease forwards;
+            position: relative;
+        }
+
+        .form-group:nth-child(2) { animation-delay: 0.1s; }
+        .form-group:nth-child(3) { animation-delay: 0.2s; }
+        .form-group:nth-child(4) { animation-delay: 0.3s; }
+        .form-group:nth-child(5) { animation-delay: 0.4s; }
+        .form-group:nth-child(6) { animation-delay: 0.5s; }
+
+        .form-group::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, #667eea, transparent);
+            border-radius: 3px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .form-group:focus-within::before {
+            opacity: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 15px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.35s ease;
+            background: white;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        input[type="number"]:hover {
+            border-color: #d0d0e0;
+            background: #fafbff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15),
+                        inset 0 2px 8px rgba(102, 126, 234, 0.08);
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        input[type="number"]::placeholder {
+            color: #b0b0c0;
+            font-weight: 400;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 14px;
+            margin-top: 40px;
+            animation: fadeInUp 0.6s ease forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        button {
+            flex: 1;
+            padding: 16px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--x, 0) var(--y, 0), rgba(255,255,255,0.3) 0%, transparent 80%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(102, 126, 234, 0.45);
+        }
+
+        .calculate-btn:hover::before {
+            left: 100%;
+        }
+
+        .calculate-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #f0f0f8 0%, #e8e8f0 100%);
+            color: #333;
+            border: 2px solid #e0e0e8;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .reset-btn:hover {
+            background: linear-gradient(135deg, #e8e8f0 0%, #e0e0e8 100%);
+            border-color: #d0d0d8;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .reset-btn:hover::before {
+            left: 100%;
+        }
+
+        .results-section {
+            margin-top: 40px;
+            padding: 32px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            border-radius: 18px;
+            display: none;
+            animation: slideInResults 0.4s ease;
+            border: 2px solid rgba(102, 126, 234, 0.15);
+            box-shadow: inset 0 2px 10px rgba(102, 126, 234, 0.05),
+                        0 8px 30px rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+
+        .results-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+            border-radius: 18px 18px 0 0;
+        }
+
+        .results-section.show {
+            display: block;
+        }
+
+        @keyframes slideInResults {
+            from {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding: 18px 20px;
+            background: white;
+            border-radius: 14px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .result-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 0 14px 14px 0;
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+
+        .result-item:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .result-item:hover::after {
+            width: 100%;
+        }
+
+        .result-item:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .result-label {
+            font-weight: 700;
+            color: #333;
+            font-size: 15px;
+            letter-spacing: 0.4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .result-value {
+            font-size: 20px;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .total {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grade-display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-align: center;
+            min-width: 60px;
+            font-size: 18px;
+            letter-spacing: 0.8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .grade-badge:hover {
+            transform: scale(1.12) rotate(2deg);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .grade-a {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+        }
+
+        .grade-b {
+            background: linear-gradient(135deg, #8bc34a 0%, #7cb342 100%);
+            color: white;
+        }
+
+        .grade-c {
+            background: linear-gradient(135deg, #ffc107 0%, #ffa000 100%);
+            color: white;
+        }
+
+        .grade-d {
+            background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+            color: white;
+        }
+
+        .grade-f {
+            background: linear-gradient(135deg, #f44336 0%, #e53935 100%);
+            color: white;
+        }
+
+        .percentage {
+            color: #667eea;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 15px;
+            margin-top: 16px;
+            display: none;
+            animation: shake 0.4s ease;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.12) 0%, rgba(233, 30, 99, 0.08) 100%);
+            border-left: 4px solid #f44336;
+            border-radius: 8px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .input-field-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .max-marks {
+            font-size: 13px;
+            color: #999;
+            font-weight: 600;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.08) 100%);
+            padding: 5px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.15);
+        }
+
+        .stats-section {
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 2px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .stat-row::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            border-radius: 2px;
+            transition: height 0.3s ease;
+        }
+
+        .stat-row:hover::before {
+            height: 100%;
+        }
+
+        .stat-row:hover {
+            padding-left: 8px;
+        }
+
+        .stat-label {
+            color: #666;
+            
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        .stat-value {
+            font-weight: 800;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+                border-radius: 24px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            button {
+                padding: 12px 20px;
+            }
+
+            .results-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>📊 Student Marks Dashboard</h1>
+            <p class="subtitle">Calculate your total marks and grade instantly</p>
+        </div>
+
+        <form id="marksForm">
+            <div class="form-group">
+                <label class="input-field-label">
+                    <span>Mathematics</span>
+                    <span class="max-marks">(Max: 100)</span>
+                </label>
+                <input type="number" id="math" placeholder="Enter marks" min="0" max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="input-field-label">
+                    <span>English</span>
+                    <span class="max-marks">(Max: 100)</span>
+                </label>
+                <input type="number" id="english" placeholder="Enter marks" min="0" max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="input-field-label">
+                    <span>Science</span>
+                    <span class="max-marks">(Max: 100)</span>
+                </label>
+                <input type="number" id="science" placeholder="Enter marks" min="0" max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="input-field-label">
+                    <span>Social Studies</span>
+                    <span class="max-marks">(Max: 100)</span>
+                </label>
+                <input type="number" id="social" placeholder="Enter marks" min="0" max="100">
+            </div>
+
+            <div class="form-group">
+                <label class="input-field-label">
+                    <span>Computer Science</span>
+                    <span class="max-marks">(Max: 100)</span>
+                </label>
+                <input type="number" id="computer" placeholder="Enter marks" min="0" max="100">
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <div class="button-group">
+                <button type="submit" class="calculate-btn">Calculate</button>
+                <button type="reset" class="reset-btn">Clear</button>
+            </div>
+        </form>
+
+        <div class="results-section" id="resultsSection">
+            <div class="result-item">
+                <span class="result-label">Total Marks</span>
+                <span class="result-value total" id="totalMarks">0/500</span>
+            </div>
+
+            <div class="result-item">
+                <span class="result-label">Grade</span>
+                <div class="grade-display">
+                    <span class="grade-badge" id="gradeBadge">-</span>
+                    <span class="percentage" id="percentage">0%</span>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-row">
+                    <span class="stat-label">Average Marks</span>
+                    <span class="stat-value" id="averageMarks">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Highest Subject</span>
+                    <span class="stat-value" id="highestSubject">-</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Status</span>
+                    <span class="stat-value" id="status">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Subject names and their input IDs
+        const subjects = {
+            math: 'Mathematics',
+            english: 'English',
+            science: 'Science',
+            social: 'Social Studies',
+            computer: 'Computer Science'
+        };
+
+        // Grade boundaries
+        const gradeScale = [
+            { min: 90, max: 100, grade: 'A', label: 'Excellent' },
+            { min: 80, max: 89, grade: 'B', label: 'Good' },
+            { min: 70, max: 79, grade: 'C', label: 'Satisfactory' },
+            { min: 60, max: 69, grade: 'D', label: 'Pass' },
+            { min: 0, max: 59, grade: 'F', label: 'Fail' }
+        ];
+
+        const form = document.getElementById('marksForm');
+        const resultsSection = document.getElementById('resultsSection');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Calculate and display results
+        function calculateResults(event) {
+            event.preventDefault();
+            errorMessage.classList.remove('show');
+
+            // Get input values
+            const marks = {
+                math: parseFloat(document.getElementById('math').value) || 0,
+                english: parseFloat(document.getElementById('english').value) || 0,
+                science: parseFloat(document.getElementById('science').value) || 0,
+                social: parseFloat(document.getElementById('social').value) || 0,
+                computer: parseFloat(document.getElementById('computer').value) || 0
+            };
+
+            // Validate input
+            if (!validateInput(marks)) {
+                return;
+            }
+
+            // Calculate total marks
+            const totalMarks = marks.math + marks.english + marks.science + marks.social + marks.computer;
+            const maxMarks = 500;
+            const percentage = (totalMarks / maxMarks) * 100;
+
+            // Get grade
+            const gradeObj = getGrade(percentage);
+
+            // Get average marks
+            const averageMarks = totalMarks / 5;
+
+            // Get highest subject
+            const highestSubject = getHighestSubject(marks);
+
+            // Get status
+            const status = percentage >= 40 ? '✓ Pass' : '✗ Fail';
+
+            // Display results
+            displayResults(totalMarks, maxMarks, percentage, gradeObj, averageMarks, highestSubject, status);
+        }
+
+        // Validate input
+        function validateInput(marks) {
+            const allMarks = Object.values(marks);
+            const hasInput = allMarks.some(mark => mark > 0);
+
+            if (!hasInput) {
+                showError('Please enter at least one mark!');
+                return false;
+            }
+
+            for (let key in marks) {
+                if (marks[key] < 0 || marks[key] > 100) {
+                    showError('All marks must be between 0 and 100!');
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Show error message
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('show');
+            resultsSection.classList.remove('show');
+        }
+
+        // Get grade based on percentage
+        function getGrade(percentage) {
+            return gradeScale.find(item => percentage >= item.min && percentage <= item.max);
+        }
+
+        // Get highest subject
+        function getHighestSubject(marks) {
+            let highest = { subject: '-', marks: 0 };
+            for (let key in marks) {
+                if (marks[key] > highest.marks) {
+                    highest.marks = marks[key];
+                    highest.subject = subjects[key];
+                }
+            }
+            return highest.subject;
+        }
+
+        // Display results
+        function displayResults(totalMarks, maxMarks, percentage, gradeObj, averageMarks, highestSubject, status) {
+            // Update total marks
+            document.getElementById('totalMarks').textContent = `${totalMarks}/${maxMarks}`;
+
+            // Update grade badge
+            const gradeBadge = document.getElementById('gradeBadge');
+            gradeBadge.textContent = gradeObj.grade;
+            gradeBadge.className = `grade-badge grade-${gradeObj.grade.toLowerCase()}`;
+
+            // Update percentage
+            document.getElementById('percentage').textContent = `${percentage.toFixed(2)}%`;
+
+            // Update average marks
+            document.getElementById('averageMarks').textContent = averageMarks.toFixed(2);
+
+            // Update highest subject
+            document.getElementById('highestSubject').textContent = highestSubject;
+
+            // Update status
+            document.getElementById('status').textContent = status;
+
+            // Show results section
+            resultsSection.classList.add('show');
+        }
+
+        // Reset form
+        form.addEventListener('reset', function() {
+            resultsSection.classList.remove('show');
+            errorMessage.classList.remove('show');
+        });
+
+        // Submit form
+        form.addEventListener('submit', calculateResults);
+    </script>
+</body>
+</html>
