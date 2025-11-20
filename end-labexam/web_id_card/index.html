@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Employee ID Card — Demo</title>
+    <!-- Link to the stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      Responsive Employee ID Card
+      - Mobile-first layout
+      - Left column: card preview (front/back)
+      - Right column / below on mobile: controls to edit fields
+    -->
+
+    <main class="app">
+      <section class="card-area">
+        <div id="idCard" class="id-card">
+          <!-- FRONT SIDE -->
+          <div class="card-side card-front" id="cardFront">
+            <div class="card-header">
+                <div class="brand">
+                  <!-- Minimal inline SVG logo for a professional feel -->
+                  <div class="logo" aria-hidden="true">
+                    <svg width="42" height="42" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="1" y="1" width="22" height="22" rx="4" fill="#1b4f9c"/>
+                      <path d="M6 12h12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                      <path d="M6 7h12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+                    </svg>
+                  </div>
+                  <div class="company">ACME Corporation</div>
+                </div>
+                <div class="role-badge">EMPLOYEE</div>
+              </div>
+            <div class="card-body">
+              <div class="photo" id="photoPreview" aria-hidden="true">
+                <!-- default avatar -->
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><rect width='100%' height='100%' fill='%23e6e6e6'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23999' font-size='36'>Avatar</text></svg>" alt="avatar" />
+              </div>
+              <div class="info">
+                <div class="name" id="cardName">Dikshitha</div>
+                <div class="title" id="cardTitle">Software Engineer</div>
+                <div class="meta">
+                  <div class="id" id="cardId">ID: S100</div>
+                  <div class="dept" id="cardDept">Dept: R&D</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="valid">Valid Thru: 12/2026</div>
+              <div class="signature">
+                <div class="sig-line"></div>
+                <div class="sig-label">Authorized Signature</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BACK SIDE -->
+          <div class="card-side card-back" id="cardBack">
+            <div class="back-content">
+              <div class="notes">Emergency: +1 555-0100</div>
+              <div class="qr">[QR CODE]</div>
+              <div class="policy">Company policy and contact information printed here.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button id="flipBtn" class="btn">Flip Card</button>
+          <button id="downloadBtn" class="btn">Download PNG</button>
+        </div>
+      </section>
+
+      <aside class="controls">
+        <h2>Employee Details</h2>
+        <form id="editForm" onsubmit="return false;">
+          <label>
+            Name
+            <input id="inputName" type="text" value="Dikshitha" />
+          </label>
+
+          <label>
+            Title
+            <input id="inputTitle" type="text" value="Software Engineer" />
+          </label>
+
+          <label>
+            Department
+            <input id="inputDept" type="text" value="R&D" />
+          </label>
+
+          <label>
+            Employee ID
+            <input id="inputId" type="text" value="S100" />
+          </label>
+
+          <label>
+            Photo (optional)
+            <input id="inputPhoto" type="file" accept="image/*" />
+          </label>
+
+          <div class="small">
+            <button id="applyBtn" class="btn primary">Apply</button>
+            <button id="resetBtn" class="btn">Reset</button>
+          </div>
+        </form>
+
+        <section class="help">
+          <h3>Notes</h3>
+          <ul>
+            <li>Use <strong>Flip Card</strong> to see back side content (QR, notes).</li>
+            <li>Download will capture the currently visible side.</li>
+            <li>Designed to be responsive — try on mobile sized window.</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
